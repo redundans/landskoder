@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="utf-8">
+	<title>Landskoder</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<script src="//unpkg.com/alpinejs" defer></script>
+	<script src="dist/confetti.browser.min.js"></script>
+	<link href="dist/styles.css" rel="stylesheet" />
+	<link rel="apple-touch-icon" sizes="180x180" href="dist/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="dist/images/avicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="dist/images/favicon-16x16.png">
+	<link rel="manifest" href="dist/site.webmanifest">
+	<meta property="og:title" content="Bokstavera" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="https://redundans.github.io/bokstavera/dist/images/bokstavera.webp" />
+	<meta property="og:image:secure_url" content="https://redundans.github.io/bokstavera/dist/images/bokstavera.webp" />
+	<meta property="og:image:type" content="image/webp" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<script>
+		const qcodes = [
+			{
+				code: 'LA',
+				explenation: 'Norge'
+			},
+			{
+				code: 'OH',
+				explenation: 'Finland'
+			},
+			{
+				code: 'OHØ',
+				explenation: 'Åland'
+			},
+			{
+				code: 'OZ',
+				explenation: 'Danmark'
+			},
+			{
+				code: 'DL',
+				explenation: 'Tyskland'
+			},
+			{
+				code: 'EA',
+				explenation: 'Spanien'
+			},
+			{
+				code: 'F',
+				explenation: 'Frankrike'
+			},
+			{
+				code: 'ES',
+				explenation: 'Estland'
+			},
+			{
+				code: 'F',
+				explenation: 'Frankrike'
+			},
+			{
+				code: 'G',
+				explenation: 'England'
+			},
+			{
+				code: 'HB',
+				explenation: 'Schweiz'
+			},
+			{
+				code: 'LY',
+				explenation: 'Litauen'
+			},
+			{
+				code: 'OK',
+				explenation: 'Tjeckien'
+			},
+			{
+				code: 'ON',
+				explenation: 'Belgien'
+			},
+			{
+				code: 'PA',
+				explenation: 'Holland'
+			},
+			{
+				code: 'SS',
+				explenation: 'Slovenion'
+			},
+			{
+				code: 'SP',
+				explenation: 'Polen'
+			},
+			{
+				code: 'SV',
+				explenation: 'Grekland'
+			},
+			{
+				code: 'UA',
+				explenation: 'Ryssland'
+			},
+			{
+				code: 'UA',
+				explenation: 'Lettland'
+			},
+			{
+				code: 'ZS',
+				explenation: 'Sydafrika'
+			},
+			{
+				code: 'EA8',
+				explenation: 'Kanarieöarna'
+			},
+			{
+				code: 'HS',
+				explenation: 'Thailand'
+			},
+			{
+				code: 'JA',
+				explenation: 'Japan'
+			},
+			{
+				code: 'W, K',
+				explenation: 'USA'
+			},
+			{
+				code: 'VE',
+				explenation: 'Kanada'
+			},
+			{
+				code: 'LU',
+				explenation: 'Argentina'
+			},
+			{
+				code: 'PY',
+				explenation: 'Brasilien'
+			},
+			{
+				code: 'VK',
+				explenation: 'Australien'
+			},
+			{
+				code: 'ZL',
+				explenation: 'Nya Zeeland'
+			}
+		];
+	</script>
+</head>
+<body id="game" class="w-full flex flex-col justify-between p-6 md:p-9"
+	x-init="updateGame"
+	x-data="{
+		correctAnswers: 0,
+		qcode: null,
+		answers: [],
+		lastAnswer: '',
+		english: false,
+		updateGame() {
+			this.qcode = qcodes[Math.floor(Math.random()*qcodes.length)];
+			const excludedAnswer = qcodes.filter((qcode) => qcode.code !== this.qcode.code );
+			this.answers = excludedAnswer.sort(function(){ return 0.5 - Math.random() });
+			this.answers = this.answers.slice(0,3);
+			this.answers.push(this.qcode);
+			this.answers = this.answers.sort(function(){ return 0.5 - Math.random() });
+		},
+		checkAnswer(answer) {
+			if ( answer.toUpperCase() === this.qcode.code.toUpperCase() ) {
+				confetti({
+					particleCount: 100,
+					spread: 70,
+					origin: {
+						y: 0.6
+					}
+				});
+				this.correctAnswers++;
+			} else {
+				this.correctAnswers = 0;
+				let body = document.getElementById('game');
+				body.classList.add('flash');
+				setTimeout(function() {
+					body.classList.remove('flash');
+				}, 500);
+			}
+			this.lastAnswer = this.qcode.explenation;
+			this.updateGame();
+		}
+	}"
+	>
+	<nav class="container mx-auto flex flex-row justify-between items-end">
+		<h1 class="text-lg md:text-xl font-extrabold">Landskoder</h1>
+		<div>
+			Rätt:
+			<span
+				x-text="correctAnswers"
+			></span>
+		</div>
+	</nav>
+	<div class="h-full mx-auto container flex flex-col justify-center items-center">
+		<div class="-mb-24 md:mb-0 flex flex-col items-center gap-6"
+			
+		>
+			
+			<div
+				id="letter"
+				x-text="qcode.code"
+			></div>
+			
+			<div class="max-w-xl mt-6 grid grid-cols-2 gap-6">
+				<template
+					x-for="answer in answers"
+				>
+					<button
+						@click="checkAnswer(answer.code)"
+						x-text="answer.explenation"
+						class="cursor-pointer border-2 hover:bg-black hover:text-white rounded-xl p-2 px-6"
+					></button>
+				</template>
+			</div>
+			
+			<div 
+				class="mt-6 h-6 text-sm font-bold"
+				>
+				<div
+					x-show="lastAnswer"
+				>
+					Förra svaret var:
+					<span
+						class="font-normal"
+						x-text="lastAnswer"
+					></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

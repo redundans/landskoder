@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-ExtraLight.eot'),
+		 url('woff2/JetBrainsMono-ExtraLight.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-ExtraLight.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-ExtraLight-Italic.eot'),
+		 url('woff2/JetBrainsMono-ExtraLight-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-ExtraLight-Italic.woff') format('woff');
+		 font-weight: 100;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Light.eot'),
+		 url('woff2/JetBrainsMono-Light.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Light.woff') format('woff');
+		 font-weight: 200;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Light-Italic.eot'),
+		 url('woff2/JetBrainsMono-Light-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Light-Italic.woff') format('woff');
+		 font-weight: 200;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-SemiLight.eot'),
+		 url('woff2/JetBrainsMono-SemiLight.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-SemiLight.woff') format('woff');
+		 font-weight: 300;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-SemiLight-Italic.eot'),
+		 url('woff2/JetBrainsMono-SemiLight-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-SemiLight-Italic.woff') format('woff');
+		 font-weight: 300;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Regular.eot'),
+		 url('woff2/JetBrainsMono-Regular.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Regular.woff') format('woff');
+		 font-weight: 400;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Italic.eot'),
+		 url('woff2/JetBrainsMono-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Italic.woff') format('woff');
+		 font-weight: 400;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Medium.eot'),
+		 url('woff2/JetBrainsMono-Medium.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Medium.woff') format('woff');
+		 font-weight: 500;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Medium-Italic.eot'),
+		 url('woff2/JetBrainsMono-Medium-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Medium-Italic.woff') format('woff');
+		 font-weight: 500;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Bold.eot'),
+		 url('woff2/JetBrainsMono-Bold.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Bold.woff') format('woff');
+		 font-weight: 600;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-Bold-Italic.eot'),
+		 url('woff2/JetBrainsMono-Bold-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-Bold-Italic.woff') format('woff');
+		 font-weight: 600;
+		 font-style: italic;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-ExtraBold.eot'),
+		 url('woff2/JetBrainsMono-ExtraBold.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-ExtraBold.woff') format('woff');
+		 font-weight: 800;
+		 font-style: normal;
+}
+
+@font-face {
+	font-family: 'JetBrainsMono';
+	src: url('fonts/eot/JetBrainsMono-ExtraBold-Italic.eot'),
+		 url('woff2/JetBrainsMono-ExtraBold-Italic.woff2') format('woff2'),
+		 url('woff/JetBrainsMono-ExtraBold-Italic.woff') format('woff');
+		 font-weight: 800;
+		 font-style: italic;
+}
+
+@theme {
+	--color-white: #F7FAF5;
+	--font-display: "JetBrainsMono", mono; 
+}
+
+
+body {
+	@apply bg-white font-mono;
+}
+
+#game {
+	@apply h-full;
+	
+	@supports (height: 100dvh) {
+		height: 100dvh; /* Dynamic height for supported browsers */
+	}
+}
+
+#letter {
+	@apply text-7xl font-bold border rounded-xl bg-black text-white p-12;
+}
+
+input[type="text"] {
+	@apply uppercase font-bold text-3xl text-center border-0 border-b-2 max-w-36 pb-1;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: 0;
+	background: transparent;
+}
+
+.flash {
+	-webkit-animation-name: flash-animation;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-duration: 0.5s;
+
+	animation-name: flash-animation;
+	animation-timing-function: ease-in-out;
+	animation-duration: 0.5s;
+}
+
+@-webkit-keyframes flash-animation {  
+	from { background: var(--color-red-400); }
+	to   { background: default; }
+}
+
+@keyframes flash-animation {  
+	from { background: var(--color-red-400); }
+	to   { background: default; }
+}
+
